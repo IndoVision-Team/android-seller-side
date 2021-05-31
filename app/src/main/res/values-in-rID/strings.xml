@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bisnis Belanja</string>
+    <string name="hint_username">Nama Pengguna</string>
+    <string name="hint_password">Kata Sandi</string>
+    <string name="login">Masuk</string>
+    <string name="sign_up">Daftar</string>
+    <string name="dont_have_an_account">Tidak punya akun?</string>
+    <string name="sign_in_with">Masuk menggunakan</string>
+    <string name="or">atau</string>
+    <string name="lost_password">Lupa Kata Sandi?</string>
+    <string name="sign_in_failed">Gagal Masuk</string>
+    <string name="pay">Bayar</string>
+    <string name="total">Jumlah</string>
+    <string name="delete">Hapus</string>
+    <string name="price">Harga</string>
+    <string name="hint_message">Ketik pesan</string>
+</resources>
