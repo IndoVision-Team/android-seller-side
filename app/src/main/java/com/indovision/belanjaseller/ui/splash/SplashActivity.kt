@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.indovision.belanjaseller.databinding.ActivitySplashBinding
+import com.indovision.belanjaseller.ui.auth.AuthActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -18,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
         viewBinding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        val intentHomepage = Intent()
+        val intentHomepage = Intent(this, AuthActivity::class.java)
         lifecycleScope.launch(Dispatchers.IO) {
             delay(TIMEOUT)
             withContext(Dispatchers.Main) {
