@@ -15,4 +15,7 @@
     <string name="delete">Hapus</string>
     <string name="price">Harga</string>
     <string name="hint_message">Ketik pesan</string>
+    <string name="shop">Toko</string>
+    <string name="product">Produk</string>
+    <string name="report">Laporan</string>
 </resources>
