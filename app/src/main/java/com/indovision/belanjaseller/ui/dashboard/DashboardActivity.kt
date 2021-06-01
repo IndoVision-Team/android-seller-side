@@ -13,3 +13,7 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
     }
 }
+
+interface IOnBackPressed {
+    fun onBackPressed(): Boolean
+}
