@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.indovision.belanjaseller.databinding.FragmentShopBinding
@@ -42,6 +43,27 @@ class ShopFragment : Fragment() {
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             it.adapter = adapter
         }
+
+        val touchHelperCallback: ItemTouchHelper.SimpleCallback =
+            object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+                override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ): Boolean {
+                    return false
+                }
+
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    if (!adapter.isActionShown()) adapter.showAction(viewHolder.adapterPosition)
+                    else if (adapter.isActionShown() && adapter.getActionShownIndex() == viewHolder.adapterPosition)
+                        adapter.closeAction()
+                    else adapter.showAction(viewHolder.adapterPosition)
+                }
+            }
+
+        val itemTouchHelper = ItemTouchHelper(touchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(binding.rvSales)
     }
 
     override fun onDestroy() {
