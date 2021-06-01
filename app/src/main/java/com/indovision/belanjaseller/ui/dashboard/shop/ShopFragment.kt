@@ -25,3 +25,11 @@ class ShopFragment : Fragment() {
         _binding = null
     }
 }
+
+private data class Sales(
+    val quantity: Int,
+    val price: Int,
+    val title: String
+) {
+    var isShowAction = false
+}
