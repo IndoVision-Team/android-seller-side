@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.indovision.belanjaseller.databinding.FragmentShopBinding
 import com.indovision.belanjaseller.databinding.ItemActionListBinding
@@ -15,6 +16,8 @@ class ShopFragment : Fragment() {
     private var _binding: FragmentShopBinding? = null
     private val binding get() = _binding as FragmentShopBinding
 
+    private lateinit var adapter: SalesAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -22,6 +25,23 @@ class ShopFragment : Fragment() {
     ): View {
         _binding = FragmentShopBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val data = listOf(
+            Sales(2, 50000, "Satu"),
+            Sales(3, 30000, "Dua"),
+            Sales(4, 40000, "Tiga")
+        )
+
+        adapter = SalesAdapter(data)
+        binding.rvSales.let {
+            it.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            it.adapter = adapter
+        }
     }
 
     override fun onDestroy() {
