@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.indovision.belanjaseller.databinding.FragmentShopBinding
 import com.indovision.belanjaseller.databinding.ItemActionListBinding
 import com.indovision.belanjaseller.databinding.ItemSaleListBinding
+import com.indovision.belanjaseller.ui.dashboard.IOnBackPressed
 
-class ShopFragment : Fragment() {
+class ShopFragment : Fragment(), IOnBackPressed {
     private var _binding: FragmentShopBinding? = null
     private val binding get() = _binding as FragmentShopBinding
 
@@ -64,6 +65,15 @@ class ShopFragment : Fragment() {
 
         val itemTouchHelper = ItemTouchHelper(touchHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.rvSales)
+    }
+
+    override fun onBackPressed(): Boolean {
+        return if (adapter.isActionShown()) {
+            adapter.closeAction()
+            true
+        } else {
+            false
+        }
     }
 
     override fun onDestroy() {
